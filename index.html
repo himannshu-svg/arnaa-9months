@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+
+<title>9 Months of Loving You, Arnaa ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+text-align:center;
+color:white;
+overflow-x:hidden;
+}
+
+h1{
+font-size:3em;
+margin-top:30px;
+animation:fade 2s;
+}
+
+.hero img{
+width:280px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+transition:0.5s;
+cursor:pointer;
+}
+
+.hero img:hover{
+transform:scale(1.07);
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:#ff4b6e;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+background:#ff2e55;
+}
+
+.slideshow{
+width:320px;
+margin:auto;
+margin-top:30px;
+}
+
+.slideshow img{
+width:100%;
+border-radius:15px;
+display:none;
+}
+
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+color:#333;
+padding:30px;
+border-radius:20px;
+width:300px;
+display:none;
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+animation:pop 0.5s;
+}
+
+@keyframes pop{
+from{transform:translate(-50%,-60%) scale(0.8);}
+to{transform:translate(-50%,-50%) scale(1);}
+}
+
+#gameArea{
+width:300px;
+height:300px;
+margin:auto;
+background:white;
+border-radius:15px;
+position:relative;
+overflow:hidden;
+}
+
+.heart{
+position:absolute;
+font-size:25px;
+cursor:pointer;
+}
+
+.floating{
+position:fixed;
+bottom:-20px;
+font-size:22px;
+animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0);}
+100%{transform:translateY(-110vh);}
+}
+
+.firework{
+position:fixed;
+font-size:30px;
+animation:boom 1s ease-out forwards;
+}
+
+@keyframes boom{
+0%{transform:scale(0);opacity:1;}
+100%{transform:scale(3);opacity:0;}
+}
+
+.secret{
+display:none;
+font-size:18px;
+margin-top:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>9 Months of Loving You, Arnaa ❤️</h1>
+<p>Every day with you feels like my favorite love story.</p>
+
+<div class="hero">
+<img src="photo4.jpg" onclick="secretMessage()">
+</div>
+
+<div class="secret" id="secret">
+You + Me = My Favourite Forever ❤️
+</div>
+
+<br>
+
+<button onclick="openLetter()">💌 A Letter For You</button>
+<button onclick="startGame()">🎮 Play the Love Game</button>
+
+<div class="slideshow">
+
+<img src="photo1.jpg" class="slide">
+<img src="photo2.jpg" class="slide">
+<img src="photo3.jpg" class="slide">
+<img src="photo5.jpg" class="slide">
+
+</div>
+
+<div class="popup" id="letter">
+
+<h2>My Dearest Arnaa ❤️</h2>
+
+<p>
+
+9 months ago, my life quietly changed when you became a part of it.
+
+Somehow your smile became my favorite sight,
+your voice became my comfort,
+and your happiness became something I care about more than my own.
+
+I don't know how I got this lucky,
+but loving you has been the easiest and most beautiful thing.
+
+If the last 9 months felt this magical,
+I can’t wait to see what the next years with you will feel like.
+
+Thank you for being you.
+
+Forever yours,
+<br><br>
+Himannshu ❤️
+
+</p>
+
+<button onclick="closeLetter()">Close</button>
+
+</div>
+
+<h2>Catch the Hearts ❤️</h2>
+
+<div id="gameArea"></div>
+
+<p>Score: <span id="score">0</span></p>
+
+<script>
+
+let slides=document.querySelectorAll(".slide")
+let index=0
+
+function showSlides(){
+slides.forEach(s=>s.style.display="none")
+slides[index].style.display="block"
+index++
+if(index>=slides.length) index=0
+}
+
+setInterval(showSlides,2000)
+showSlides()
+
+function openLetter(){
+document.getElementById("letter").style.display="block"
+}
+
+function closeLetter(){
+document.getElementById("letter").style.display="none"
+}
+
+function secretMessage(){
+document.getElementById("secret").style.display="block"
+}
+
+let score=0
+
+function startGame(){
+
+let game=document.getElementById("gameArea")
+
+setInterval(()=>{
+
+let heart=document.createElement("div")
+heart.innerHTML="❤️"
+heart.className="heart"
+
+heart.style.left=Math.random()*260+"px"
+heart.style.top=Math.random()*260+"px"
+
+heart.onclick=function(){
+
+score++
+document.getElementById("score").innerText=score
+heart.remove()
+
+if(score==10){
+celebrate()
+}
+
+}
+
+game.appendChild(heart)
+
+setTimeout(()=>heart.remove(),1500)
+
+},700)
+
+}
+
+function celebrate(){
+
+for(let i=0;i<20;i++){
+
+let fw=document.createElement("div")
+fw.innerHTML="✨"
+fw.className="firework"
+
+fw.style.left=Math.random()*100+"vw"
+fw.style.top=Math.random()*100+"vh"
+
+document.body.appendChild(fw)
+
+setTimeout(()=>fw.remove(),1000)
+
+}
+
+alert("You unlocked a secret: I love you endlessly Arnaa ❤️")
+
+}
+
+function floatingHearts(){
+
+let heart=document.createElement("div")
+heart.innerHTML="❤️"
+heart.className="floating"
+
+heart.style.left=Math.random()*100+"vw"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>heart.remove(),6000)
+
+}
+
+setInterval(floatingHearts,800)
+
+</script>
+
+</body>
+
+</html>
